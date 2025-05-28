@@ -8,7 +8,7 @@ use criterion::{Criterion, measurement::Measurement};
 #[cfg(unix)]
 use criterion_cpu_time::PosixTime;
 
-pub fn cpu_time_measurement() -> impl Criterion {
+pub fn cpu_time_measurement() -> Criterion {
     #[cfg(unix)]
     {
         // On Unix systems, use CPU time measurement

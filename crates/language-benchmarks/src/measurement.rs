@@ -2,7 +2,7 @@
 // Copyright (c) The Move Contributors
 // SPDX-License-Identifier: Apache-2.0
 
-use criterion::{Criterion, measurement::Measurement};
+use criterion::Criterion;
 
 // Use conditional compilation to handle platform-specific code
 #[cfg(unix)]
@@ -12,7 +12,8 @@ pub fn cpu_time_measurement() -> Criterion {
     #[cfg(unix)]
     {
         // On Unix systems, use CPU time measurement
-        Criterion::default().with_measurement(PosixTime::UserAndSystemTime)
+        let posix_time = PosixTime::UserAndSystemTime;
+        Criterion::default().with_measurement(posix_time)
     }
     
     #[cfg(not(unix))]
